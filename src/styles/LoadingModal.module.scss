@@ -1,0 +1,16 @@
+@import 'main';
+
+.loaderWrapper {
+    border: none !important;
+    outline: none !important;
+    div {
+        border: none !important;
+        outline: none !important;
+    }
+    position: absolute;
+    @include flexDisplaying($justify: center, $align: center);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    top: 50%;
+    left: 50%;
+}

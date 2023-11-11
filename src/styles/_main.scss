@@ -1,0 +1,50 @@
+@use "sass:math";
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('../../public/fonts/Poppins-Bold.ttf');
+}
+@font-face {
+    font-family: 'Poppins-BoldItalic';
+    src: url('../../public/fonts/Poppins-BoldItalic.ttf');
+}
+@font-face {
+    font-family: 'Poppins-LightItalic';
+    src: url('../../public/fonts/Poppins-LightItalic.ttf');
+}
+
+$oceanBlue: rgba(0,166,228,1);
+$niceBlue: rgb(58, 149, 233);
+
+$niceDarkBlue: rgb(0, 94, 183);
+
+$niceDarkBlue2: rgb(0, 96, 149);
+
+$beautifulBlue: rgb(38, 57, 77);
+
+$niceYellow: rgb(212, 189, 147);
+
+$niceOrange: rgb(206, 122, 0);
+
+$darkerWhite: #f4f3f1;
+
+$dotColour: rgb(229, 231, 235);
+
+$niceGrey: #e8e8e8;
+
+@mixin wrappedFlexDisplaying($direction: row, $justify: flex-start, $align: stretch)
+{
+    display: flex !important;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: wrap;
+}
+
+@mixin flexDisplaying($direction: row, $justify: flex-start, $align: stretch)
+{
+    display: flex !important;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
