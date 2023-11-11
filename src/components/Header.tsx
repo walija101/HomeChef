@@ -7,12 +7,12 @@ function Header() {
     const {data: session} = useSession();
     const user = session && session.user;
 
-    const [size, setSize] = useState();
+    const [drawer, setDrawer] = useState(false);
 
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth < 500){
-        
+        setDrawer(true);
       }
     };
 
@@ -41,14 +41,22 @@ function Header() {
         </nav>
 
         <nav className= {styles.second}>
-          <Link href="/">Home</Link>
-          <Link href="/meals">Meals</Link>
-          <Link href="/about">About</Link>
-          <Link href="/profile">Profile</Link>
+          {drawer ? <div>Drawer</div> :
+            <>
+              <Link href="/">Home</Link>
+              <Link href="/meals">Meals</Link>
+              <Link href="/about">About</Link>
+              <Link href="/profile">Profile</Link>
+            </>
+          }
         </nav>
+
 
     </div>
   )
+}
+
+function Drawer(){ 
 }
 
 export default Header
