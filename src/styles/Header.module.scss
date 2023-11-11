@@ -1,5 +1,56 @@
 @import "main";
 
 .header{
+    background-color: $cream;
+    font-size: 30px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-bottom: 50px;
+    height: 20vh;
+    padding: 20px;
+    
+    .first {
+        display: flex;
+        margin-bottom: 20px;
+        align-content: center;
 
+        .left{
+            margin-right: auto;
+            font-size: 700;
+            color: $darkGreen;
+
+        }
+     
+        .right{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            button{
+                padding: 15px;
+                background-color: $green;
+                border: none;
+                border-radius: 5px;
+            }
+
+            button:hover {
+                position: relative;
+                top: 1px;
+                cursor: pointer;
+                color: $darkGreen;
+            }
+        }
+    }
+
+    .second{
+        display: flex;
+        gap: 40px;
+        color: $brown;
+
+        a:hover{
+            color: $darkBrown;
+        }
+    }
 }
+
