@@ -7,8 +7,8 @@ import { SessionProvider } from 'next-auth/react'
 export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
   return (
     <SessionProvider>
-      <LoadingContextProvider> <Layout><Component {...pageProps} /></Layout></LoadingContextProvider>
-    </SessionProvider>
+    <LoadingContextProvider> <Layout><Component {...pageProps} /></Layout></LoadingContextProvider>
+  </SessionProvider>
   )
 }
 
