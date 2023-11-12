@@ -51,7 +51,43 @@ UserSchema.statics.createUser = async function(data) {
     if (picture)
         user.picture = picture
 
-    await this.create(user)
+    return (await this.create(user));
+}
+
+UserSchema.statics.updateUser = async function (userId, data) {
+    const theUser = await this.findById(userId);
+    if(!theUser)
+        throw Error("Could not find user");
+
+    let updateObject: {
+        name?: string,
+        description?: string,
+        picture?: string,
+        isChef?: string,
+        rating?: number,
+        phone?: string,
+        updatedAt?: string
+    } = {};
+    Object.keys(data).forEach(key => {
+        if(key.trim() === "")
+            throw Error(`Field name can't be empty`);
+        else {
+            let fieldName = key.trim().toLowerCase() as ('name' | 'description' | 'picture' | 'isChef' | 'rating' | 'phone');
+            let newValue = typeof data[key] === 'string' ? data[key].trim() : data[key];
+
+            if(fieldName === 'name')
+                updateObject.name = newValue;
+            else if (fieldName === 'description')
+                updateObject.description = newValue;
+            else
+                console.log(`Cannot update field "${fieldName}"`);
+        }
+    });
+
+    if(Object.keys(updateObject).length > 0) {
+        updateObject.updatedAt = new Date().toISOString().slice(0, 23)+"+00:00";
+        await this.findOneAndUpdate({ _id: userId }, updateObject);
+    }
 }
 
 export default User
