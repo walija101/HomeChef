@@ -20,19 +20,13 @@ export default async function handler(
         if (!session)
             return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {name, description, picture, isChef, rating, email, phone} = req.body
+        const {status} = req.body
 
-        const user = {
-            name: name,
-            description: description,
-            picture: picture,
-            isChef: isChef,
-            rating: rating,
-            email: email,
-            phone: phone
+        const order = {
+            status: status
         }
 
-        await (User as any).updateUser(user)
+        await (User as any).updateUser(order)
         res.status(201).json({success: true})
     } catch (error: any) {
         console.log(error)
