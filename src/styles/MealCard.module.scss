@@ -8,13 +8,14 @@
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     margin: 30px 10px;
     padding: 15px;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
     @include flexDisplaying($direction: column, $align: center);
     .pictureContainer {
         overflow: hidden;
         border-radius: 12px;
         width: 95%;
         height: 45%;
-        background-color: red;
     }
     .nameSection {
         width: 95%;
@@ -57,4 +58,8 @@
             @include flexDisplaying($direction: column, $align: flex-start);
         }
     }
+}
+
+.card:hover {
+    transform: scale(1.04);
 }

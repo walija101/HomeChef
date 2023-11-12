@@ -2,11 +2,12 @@ import { MealType } from "@/lib/models/meal/meal.types"
 import styles from '@/styles/MealCard.module.scss'
 
 type MealCardProps = {
-    meal: MealType
+    meal: MealType,
+    onClick: (arg: any) => void
 }
-export default function MealCard({ meal }: MealCardProps) {
+export default function MealCard({ meal, onClick }: MealCardProps) {
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={() => onClick(meal)}>
             <div className={styles.pictureContainer}>
                 <img src="./images/food.jpeg" style={{ width: '100%', height: '100%' }} />
             </div>
