@@ -6,7 +6,8 @@
     flex-direction: column;
     justify-content: center;
     color: $darkBrown;
-    padding: 0px 10px;
+    padding: 0px 16px;
+    gap: 8px;
 
     span{
         color: $darkGreen;
@@ -18,7 +19,7 @@
         padding: 16px;
         background-color: $green;
         border: none;
-        width: 12vw;;
+        min-width: 12vw;
         height: 8vh;
         border: 3px solid $darkBrown;
         border-radius: 5px;
@@ -38,6 +39,12 @@
     }
 
     .orderOptions{
-        
+        display: flex;
+        flex-direction: column;
+        form{
+            input[type=radio]{ 
+                accent-color: $darkBrown; 
+            } 
+        }
     }
 }
