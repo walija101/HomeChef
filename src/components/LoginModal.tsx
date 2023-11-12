@@ -1,7 +1,7 @@
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import styles from '@/styles/AuthModal.module.scss'
+import styles from '@/styles/LoginModal.module.scss'
 import Fade from '@mui/material/Fade';
 import { signIn } from 'next-auth/react'
 import { useState } from 'react';
@@ -23,17 +23,16 @@ const modalBoxStyles = {
 };
 
 const ModalContent = () => {
-    const [signUpData, setSignUpData] = useState(
+    const [loginData, setLoginData] = useState(
         {
             email: "",
             password: "",
-            type: ""
         }
     )
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>){
         const {name, value} = event.target
-        setSignUpData(prev => {
+        setLoginData(prev => {
             return{
                 ...prev,
                 [name]: value
@@ -43,7 +42,7 @@ const ModalContent = () => {
 
     return (
         <div className={styles.modal}>
-            <h2 className={styles.header}>Sign up to Home Chef</h2>
+            <h2 className={styles.header}>Welcome back to Home Chef</h2>
 
             <form className={styles.form}>
                 <div className= {styles.typeContainer}>
@@ -52,7 +51,7 @@ const ModalContent = () => {
                         placeholder="Email"
                         onChange={handleChange}
                         name="email"
-                        value={signUpData.email}
+                        value={loginData.email}
                     />
 
                     <input
@@ -60,55 +59,30 @@ const ModalContent = () => {
                         placeholder="Password"
                         onChange={handleChange}
                         name="password"
-                        value={signUpData.password}
+                        value={loginData.password}
                     />
                 </div>
-  
-                <fieldset>
-                    <legend>Are you a chef or an eater?</legend>
-                    <input 
-                        type="radio"
-                        id="customer"
-                        name="type"
-                        value="customer"
-                        checked={signUpData.type === "customer"}
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="customer">Customer</label>
-                    <br />
-                    
-                    <input 
-                        type="radio"
-                        id="chef"
-                        name="type"
-                        value="chef"
-                        checked={signUpData.type === "chef"}
-                        onChange={handleChange}
-                    />
-                    <label htmlFor="chef">Chef</label>
-                    <br />
-                </fieldset>
-                
+
                 <br />
-                <button>Sign Up</button>
+                <button>Login</button>
             </form>
         </div>
     )
 };
 
 type AuthModalProps = {
-    modalIsOpen: boolean,
-    closeModal: ()=>void
+    lmodalIsOpen: boolean,
+    lcloseModal: ()=>void
 }
 
-export default function AuthModal({ modalIsOpen, closeModal } : AuthModalProps) {
+export default function LoginModal({ lmodalIsOpen, lcloseModal } : AuthModalProps) {
     return (
         <div>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={modalIsOpen}
-                onClose={closeModal}
+                open={lmodalIsOpen}
+                onClose={lcloseModal}
                 closeAfterTransition
                 components={{
                     Backdrop
@@ -119,7 +93,7 @@ export default function AuthModal({ modalIsOpen, closeModal } : AuthModalProps) 
                     }
                 }}
             >
-                <Fade in={modalIsOpen}>
+                <Fade in={lmodalIsOpen}>
                     <Box component='div' sx={modalBoxStyles}>
                         <ModalContent />
                     </Box>
