@@ -1,0 +1,14 @@
+@import 'main';
+
+.mealsContainer {
+    margin-top: 15vh;
+    padding-top: 3rem;
+    width: 100%;
+    h1 {
+        color: #f4f3f1;
+    }
+    .mealsCards {
+        width: 100%;
+        @include wrappedFlexDisplaying($justify: space-around);
+    }
+}
