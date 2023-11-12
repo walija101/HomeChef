@@ -5,6 +5,7 @@ import styles from "@/styles/DMeal.module.scss";
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router'
+import { MealType } from '@/lib/models/meal/meal.types';
 
 const modalBoxStyles = {
 
@@ -27,21 +28,21 @@ const modalBoxStyles = {
     
 };
 
-const ModalContent = ({ closeModal }: { closeModal: () => void  }) => {
+const ModalContent = ({ closeModal, meal }: { closeModal: () => void, meal: MealType  }) => {
     const router = useRouter();
 
     return (
         <div className={styles.container}>
 
-           <h1 className={styles.title}>{`Joe's Casserole`}</h1>
+           <h1 className={styles.title}>{`${meal.chef}'s Casserole`}</h1>
 
-           <img src={'./images/cass.jpg'} className={styles.img}/>
+           <img src={`./images/${meal.image}.jpg`} className={styles.img}/>
 
            <div className={styles.second}> 
                 <hr/>               
-                <div>Price: $29.99</div>
+                <div>{`Price: $${meal.price}`}</div>
                 <hr/> 
-                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sint harum distinctio. Eos quam maiore.</div>
+                <div>{meal.description}</div>
                 <hr/> 
            </div>
 
@@ -56,10 +57,10 @@ const ModalContent = ({ closeModal }: { closeModal: () => void  }) => {
            </div>
            <div className={styles.fourth}>
                 <div>
-                    <div> Chef name: John Stewart </div>
+                    <div>{` Chef name: ${meal.chef} `}</div>
                     <div>Rating: 4.5</div>
                 </div>
-                <img src={'./images/gordo.jpeg'} className={styles.pfp}/>
+                <img src={`./images/${meal.chefPicture}.jpg`} className={styles.pfp}/>
             </div>
             
             <div className={styles.order}>
@@ -88,10 +89,11 @@ const ModalContent = ({ closeModal }: { closeModal: () => void  }) => {
 
 type AuthModalProps = {
     mmodalIsOpen: boolean,
-    closeModal: ()=>void
+    closeModal: ()=>void,
+    meal: MealType
 }
 
-export default function LoginModal({ mmodalIsOpen, closeModal } : AuthModalProps) {
+export default function LoginModal({ mmodalIsOpen, closeModal, meal } : AuthModalProps) {
     return (
         <div>
             <Modal
@@ -111,7 +113,7 @@ export default function LoginModal({ mmodalIsOpen, closeModal } : AuthModalProps
             >
                 <Fade in={mmodalIsOpen}>
                     <Box component='div' sx={modalBoxStyles}>
-                        <ModalContent closeModal={closeModal} />
+                        <ModalContent closeModal={closeModal} meal={meal} />
                     </Box>
                 </Fade>
             </Modal>

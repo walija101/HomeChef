@@ -75,7 +75,7 @@ const meals = [
         chefRating: "4.0",
         cookTime: '11:00 AM',
         pickupTime: "1:00 PM",
-        image: "cheickenPenne",
+        image: "chickenPenne",
         createdAt: new Date('2023-11 - 12T03: 13: 38.493+00:00'),
         updatedAt: new Date('2023-11 - 12T03: 13: 38.493+00:00')
     },
@@ -113,7 +113,7 @@ function Meals() {
                     <MealCard key={meal._id} meal={meal} onClick={setOpenMeal} />
                 ))}
             </div>
-            <DetailedMealModal mmodalIsOpen={Boolean(meal)} closeModal={closeModal} />
+            {meal && <DetailedMealModal mmodalIsOpen={Boolean(meal)} closeModal={closeModal}  meal={meal} />}
         </center>
     )
 }

@@ -5,6 +5,7 @@ export type MealType = {
     price: number,
     ingredients: string[],
     chef: string,
+    chefPicture:  string
     cookTime: string,
     pickupTime: string,
     image: string,

@@ -9,20 +9,28 @@ export default function MealCard({ meal, onClick }: MealCardProps) {
     return (
         <div className={styles.card} onClick={() => onClick(meal)}>
             <div className={styles.pictureContainer}>
-                <img src="./images/food.jpeg" style={{ width: '100%', height: '100%' }} />
+                <img src={`./images/${meal.image}.jpg`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
             <div className={styles.nameSection}>
                 <h1 className={styles.foodName}>{meal.name}</h1>
                 <h2 className={styles.price}>{`$${meal.price}`}</h2>
             </div>
-            <p>{meal.description}</p>
-            <p>{`Ingredients include: ${meal.ingredients.join(', ')}`}</p>
+            <div className={styles.mealDescriptionSection}>
+                <p className={styles.mealDescription}>
+                    {meal.description}
+                </p>
+            </div>
+            <div className={styles.ingredientsSection}>
+                <p>
+                    {`Ingredients include: ${meal.ingredients.join(', ')}`}
+                </p>
+            </div>
             <div className={styles.chefSection}>
                 <div className={styles.chefIcon}>
-                    <img src='./images/chef.jpg' />
+                    <img src={`./images/${meal.chefPicture}.jpg`} />
                 </div>
                 <div className={styles.chefInfoSection}>
-                    <h2 className={styles.chefName}>{meal.chef.toUpperCase()}</h2>
+                    <h3 className={styles.chefName}>{meal.chef.toUpperCase()}</h3>
                     <p>Top Rated Cook</p>
                 </div>
             </div>

@@ -28,11 +28,22 @@
             color: black;
         }
     }
-    p {
-        width: 95%; 
-        color: #4b6f40;
+    .mealDescriptionSection {
+        width: 95%;
+        height: 20%;
+        overflow: hidden;
         text-align: left;
-        color: black;
+        .mealDescription {
+            width: 100%;
+            height: 100%;
+            overflow-wrap: 'break-word';
+        }
+    }
+    .ingredientsSection {
+        text-align: left;
+        width: 95%;
+        height: 20%;
+        overflow: hidden;
     }
     .chefSection {
         margin-top: 15px;
