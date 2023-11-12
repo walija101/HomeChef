@@ -53,7 +53,5 @@ UserSchema.statics.createUser = async function(data) {
 
     await this.create(user)
 }
-    
-}
 
 export default User
