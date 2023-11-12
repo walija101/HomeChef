@@ -3,8 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import styles from "@/styles/DMeal.module.scss";
 import Fade from '@mui/material/Fade';
-import { signIn } from 'next-auth/react'
-import { useState } from 'react';
+import Button from '@mui/material/Button';
+import { useRouter } from 'next/router'
 
 const modalBoxStyles = {
 
@@ -27,7 +27,9 @@ const modalBoxStyles = {
     
 };
 
-const ModalContent = () => {
+const ModalContent = ({ closeModal }: { closeModal: () => void  }) => {
+    const router = useRouter();
+
     return (
         <div className={styles.container}>
 
@@ -61,7 +63,23 @@ const ModalContent = () => {
             </div>
             
             <div className={styles.order}>
-                <button className={styles.button}>Order</button>
+                <Button
+                    variant='contained'
+                    sx={{
+                        fontWeight: 'bold',
+                        width: '90%',
+                        backgroundColor: '#edead3',
+                        color: 'brown',
+                        '&:hover': {
+                            backgroundColor: 'burlywood'
+                        }
+                    }}
+                    onClick={() => {
+                    closeModal()
+                    router.push('/order')
+                }}>
+                    Order
+                </Button>
             </div>
 
         </div>
@@ -70,17 +88,17 @@ const ModalContent = () => {
 
 type AuthModalProps = {
     mmodalIsOpen: boolean,
-    mcloseModal: ()=>void
+    closeModal: ()=>void
 }
 
-export default function LoginModal({ mmodalIsOpen, mcloseModal } : AuthModalProps) {
+export default function LoginModal({ mmodalIsOpen, closeModal } : AuthModalProps) {
     return (
         <div>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
                 open={mmodalIsOpen}
-                onClose={mcloseModal}
+                onClose={closeModal}
                 closeAfterTransition
                 components={{
                     Backdrop
@@ -93,7 +111,7 @@ export default function LoginModal({ mmodalIsOpen, mcloseModal } : AuthModalProp
             >
                 <Fade in={mmodalIsOpen}>
                     <Box component='div' sx={modalBoxStyles}>
-                        <ModalContent />
+                        <ModalContent closeModal={closeModal} />
                     </Box>
                 </Fade>
             </Modal>
