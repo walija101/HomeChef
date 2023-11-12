@@ -81,7 +81,7 @@ function Profile() {
           placeholder="Ingredients"
           onChange={handleChange}
           name="ingredients"
-          value={meal.name}
+          value={meal.ingredients}
         />   
          </div> 
 
@@ -110,7 +110,7 @@ function Profile() {
           type="text"
           placeholder="Image"
           onChange={handleChange}
-          name="img"
+          name="image"
           value={meal.image}
         /> 
         </div>
