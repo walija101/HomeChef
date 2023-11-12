@@ -1,1 +1,14 @@
-@import 'main'
+@import 'main';
+
+.mealsContainer {
+    margin-top: 15vh;
+    padding-top: 3rem;
+    width: 100%;
+    height: 500px;
+    h1 {
+        color: #f4f3f1;
+    }
+    .mealsCards {
+        width: 95%;
+    }
+}
