@@ -60,7 +60,7 @@ function Profile() {
     const onSubmit = async (data: mealSubmisionInfo) => {
         const { name, description, price, ingredients, maxOrderTime, image, maxOrders } = data
         try {
-            
+            console.log({ name, description, price, ingredients, maxOrderTime, image, maxOrders })
         } catch(error: any) {
             console.log(error)
         }
