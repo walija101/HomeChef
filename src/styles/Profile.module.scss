@@ -1,0 +1,21 @@
+@import 'main';
+
+.container{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $darkBrown;
+    padding: 0px 16px;
+    gap: 8px;
+    font-size: 1.75rem;
+
+    .stats{
+        span{
+            color: $darkGreen;
+            text-decoration: underline;
+            text-decoration-color: $darkBrown;
+        }
+    }
+}
