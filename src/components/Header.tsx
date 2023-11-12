@@ -13,19 +13,18 @@ function Header() {
   const [showModal, setShowModal] = useState(false);
   const [lshowModal, setlShowModal] = useState(false);
 
-
-  const [meal, setMeal] = useState(false)
-//-----------
-  function closeMeal(){
-    setMeal(false)
+  const [meal, setMeal] = useState(false);
+  //-----------
+  function closeMeal() {
+    setMeal(false);
   }
   //-----------
 
-  function closeModal(){
+  function closeModal() {
     setShowModal(false);
   }
 
-  function lcloseModal(){
+  function lcloseModal() {
     setlShowModal(false);
   }
 
@@ -44,28 +43,10 @@ function Header() {
   }, []);
   return (
     <div className={styles.header}>
-      <nav className={styles.first}>
-        <div className={styles.left}>
-          <h1 className={styles.name}>HomeChef</h1>
-        </div>
-        <div className={styles.right}>
-          {!user ? (
-            // Add on click
-            <>
-              <button onClick={() => setlShowModal(prev => !prev)}>Login</button>
-              <button className={styles.signupButton} onClick={() => setShowModal(prev => !prev)}>Signup</button>
-            </>
-          ) : (
-            // Change user to username
-            <>
-               <div>Hello, user!</div>
-               <button>Logout</button>
-            </>
-          )}
-        </div>
-      </nav>
-
-      <nav className={styles.second}>
+      <div className={styles.left}>
+        <h1 className={styles.name}>HomeChef</h1>
+      </div>
+      <nav className={styles.middle}>
         {drawer ? (
           <div>Drawer</div>
         ) : (
@@ -73,16 +54,18 @@ function Header() {
             <Link href="/">Home</Link>
             <Link href="/meals">Meals</Link>
             <Link href="/about">About</Link>
-            {user ? <> </> :<Link href="/profile">Profile</Link>}
-            <button onClick={() => setMeal(prev => !prev)} className={styles.test}></button>
+            {user ? <> </> : <Link href="/profile">Profile</Link>}
+            <button
+              onClick={() => setMeal((prev) => !prev)}
+              className={styles.test}
+            ></button>
           </>
         )}
       </nav>
       <SignUpModal modalIsOpen={showModal} closeModal={closeModal}/>
       <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal}/>
 
-      <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal}/>
-
+      <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal} />
     </div>
   );
 }

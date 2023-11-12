@@ -6,5 +6,6 @@ export type UserType = {
     isChef: boolean,
     rating: number,
     email: string,
-    phone: string
+    phone: string,
+    password: string
 }
