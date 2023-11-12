@@ -33,23 +33,25 @@ const UserSchema = new Schema({
 
 const User = models.User || model('User', UserSchema);
 
-export default User;
-
 UserSchema.statics.createUser = async function(data) {
     const {name, description, picture, isChef, rating, email, phone} = data
-    const user = {
+    const user: {
+        name: string, description?: string, picture?: string, isChef: boolean, rating?: number, email: string, phone: string
+    } = {
         name: name,
-        description,
-        picture,
         isChef: isChef,
-        rating,
         email: email,
         phone: phone
     }
 
-    if (rating) {
-        
-    }
+    if (description) 
+        user.description = description
+    if (rating) 
+        user.rating = rating
+    if (picture)
+        user.picture = picture
 
     await this.create(user)
 }
+
+export default User

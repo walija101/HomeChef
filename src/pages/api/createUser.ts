@@ -1,10 +1,8 @@
 import { getServerSession } from 'next-auth/next';
 import {connectToDB} from '@/lib/db'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getServers } from 'dns';
 import { authOptions } from '@/lib/auth';
-import {User} from '@/lib/models/user/user.types'
-import mongoose from 'mongoose';
+import {User} from '@/lib/models/models'
 
 export default async function handler(
     req: NextApiRequest,
@@ -24,10 +22,15 @@ export default async function handler(
 
         const {name, email, phone, isChef} = req.body
 
-        const user = await User.generate
+        const user = {
+            name: name,
+            isChef: isChef,
+            email: email,
+            phone: phone
+        }
 
-        
-
+        await (User as any).createUser(user)
+        res.status(201).json({success: true})
 
     } catch (error: any) {
         console.log(error)
