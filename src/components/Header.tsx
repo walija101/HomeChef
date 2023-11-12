@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import AuthModal from "./AuthModal";
 import LoginModal from "./LoginModal";
+import DetailedMealModal from "./DetailedMealModal";
 
 function Header() {
   const { data: session } = useSession();
@@ -11,6 +12,14 @@ function Header() {
 
   const [showModal, setShowModal] = useState(false);
   const [lshowModal, setlShowModal] = useState(false);
+
+
+  const [meal, setMeal] = useState(false)
+//-----------
+  function closeMeal(){
+    setMeal(false)
+  }
+  //-----------
 
   function closeModal(){
     setShowModal(false);
@@ -65,11 +74,15 @@ function Header() {
             <Link href="/meals">Meals</Link>
             <Link href="/about">About</Link>
             {user ? <> </> :<Link href="/profile">Profile</Link>}
+            <button onClick={() => setMeal(prev => !prev)} className={styles.test}></button>
           </>
         )}
       </nav>
       <AuthModal modalIsOpen={showModal} closeModal={closeModal}/>
       <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal}/>
+
+      <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal}/>
+
     </div>
   );
 }
