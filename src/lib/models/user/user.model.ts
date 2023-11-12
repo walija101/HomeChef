@@ -1,4 +1,5 @@
 import { Schema, model, models } from 'mongoose';
+import { UserType } from './user.types';
 
 const UserSchema = new Schema({
     name: {
@@ -28,6 +29,10 @@ const UserSchema = new Schema({
     phone: {
         type: String,
         required: true
+    },
+    password: {
+        type: String,
+        required: true
     }
 }, { collection: 'Users', timestamps: true });
 
@@ -41,18 +46,20 @@ type createUserData = {
     rating: number,
     email: string,
     phone: string,
+    password: string,
     [key: string]: any
 }
 
 export async function createUser(data : createUserData) {
-    const {name, description, picture, isChef, rating, email, phone} = data
+    const {name, description, picture, isChef, rating, email, phone, password} = data
     const user: {
-        name: string, description?: string, picture?: string, isChef: boolean, rating?: number, email: string, phone: string
+        name: string, description?: string, picture?: string, isChef: boolean, rating?: number, email: string, phone: string, password: string
     } = {
         name: name,
         isChef: isChef,
         email: email,
-        phone: phone
+        phone: phone,
+        password: password
     }
 
     if (description) 
@@ -77,13 +84,14 @@ export async function updateUser(userId : string, data : createUserData) {
         isChef?: string,
         rating?: number,
         phone?: string,
+        password?: string, 
         updatedAt?: string
     } = {};
     Object.keys(data).forEach(key => {
         if(key.trim() === "")
             throw Error(`Field name can't be empty`);
         else {
-            let fieldName = key.trim().toLowerCase() as ('name' | 'description' | 'picture' | 'isChef' | 'rating' | 'phone');
+            let fieldName = key.trim().toLowerCase() as ('name' | 'description' | 'picture' | 'isChef' | 'rating' | 'phone'| 'password');
             let newValue = typeof data[key] === 'string' ? data[key].trim() : data[key];
 
             if(fieldName === 'name')
