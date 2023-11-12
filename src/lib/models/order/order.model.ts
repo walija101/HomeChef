@@ -11,16 +11,23 @@ const OrderSchema = new Schema({
         ref: "User",
         required: true
     },
-    orderTime: {
-        type: Date,
-        required: true
-    },
-    pickupStatus: {
-        type: Boolean,
-        default: false
+    status: {
+        type: String,
+        required: false
     }
 }, { collection: 'Orders', timestamps: true });
 
 const Order = models.Order || model('Order', OrderSchema);
+
+OrderSchema.statics.createOrder = async function(data) {
+    const {meal, user} = data
+    const order: { 
+        meal: string, user: string 
+    } = {
+        meal: meal,
+        user: user
+    }
+    return (await this.create(order));
+}
 
 export default Order;
