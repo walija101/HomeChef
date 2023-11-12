@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import {connectToDB} from '@/lib/db'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { authOptions } from '@/lib/auth';
-import {Review} from '@/lib/models/models'
+import { createReview } from '@/lib/models/review/review.model';
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,20 +15,21 @@ export default async function handler(
     try {
         await connectToDB();
 
-        const serverResponse = await getServerSession(req, res, authOptions)
-        const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
-        if (!session)
-            return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
+        // const serverResponse = await getServerSession(req, res, authOptions)
+        // const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
+        // if (!session)
+        //     return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {order, chef, stars} = req.body
+        const {order, chef, description, stars} = req.body
 
         const review = {
             order: order,
             chef: chef,
+            description: description,
             stars: stars
         }
 
-        await (Review as any).createReview(review)
+        await createReview(review)
         res.status(201).json({success: true})
 
     } catch (error: any) {
