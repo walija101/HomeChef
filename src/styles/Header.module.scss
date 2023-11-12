@@ -1,14 +1,13 @@
 @import "main";
 
 .header {
-  background-color: $cream;
+  background: linear-gradient(to right, $cream, #bab8a5);
   font-size: 32px;
   position: fixed;
   top: 0;
   width: 100%;
-  margin-bottom: 50px;
   height: 15vh;
-  padding: 15px;
+  padding: 5px 15px;
   z-index: 100;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 
@@ -30,7 +29,7 @@
 
       button {
         padding: 0em 1em;
-        background-color: $brown;
+        background: radial-gradient(circle, #a45a52, #8b514b);
         border-radius: 5px;
         font-size: 0.6em;
         border: none;
