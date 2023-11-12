@@ -17,7 +17,7 @@ function Header() {
   const [drawer, setDrawer] = useState(false);
   useEffect(() => {
     const handleSize = () => {
-      if (window.innerWidth < 500){
+      if (window.innerWidth < 500) {
         setDrawer(true);
       }
     };
@@ -50,20 +50,17 @@ function Header() {
         <nav className= {styles.second}>
           {drawer ? <div>Drawer</div> :
             <>
-              <Link href="/">Home</Link>
-              <Link href="/meals">Meals</Link>
-              <Link href="/about">About</Link>
-              <Link href="/profile">Profile</Link>
+              <button>Login</button>
+              <button className={styles.signupButton}>Signup</button>
             </>
           }
         </nav>
 
        <AuthModal modalIsOpen={showModal} closeModal={closeModal}/>
     </div>
-  )
+  );
 }
 
-function Drawer(){ 
-}
+function Drawer() {}
 
-export default Header
+export default Header;
