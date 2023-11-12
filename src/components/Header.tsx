@@ -36,42 +36,44 @@ function Header() {
     }, []);
     return (
         <div className={styles.header}>
-            <div className={styles.left}>
-                <h1 className={styles.name}>HomeChef</h1>
-            </div>
-            <nav className={styles.middle}>
-                {drawer ? (
-                    <div>Drawer</div>
-                ) : (
-                    <>
-                        <Link href="/">Home</Link>
-                        <Link href="/meals">Meals</Link>
-                        <Link href="/about">About</Link>
-                        {user ? <> </> : <Link href="/profile">Profile</Link>}
-                    </>
-                )}
-            </nav>
-            <div className={styles.right}>
-                {!user ? (
-                    // Add on click
-                    <>
-                        <button onClick={() => setlShowModal((prev) => !prev)}>
-                            Login
-                        </button>
-                        <button
-                            className={styles.signupButton}
-                            onClick={() => setShowModal((prev) => !prev)}
-                        >
-                            Signup
-                        </button>
-                    </>
-                ) : (
-                    // Change user to username
-                    <>
-                        <div>Hello, user!</div>
-                        <button onClick={() => signOut()}>Logout</button>
-                    </>
-                )}
+            <div className={styles.innerHeader}>
+                <div className={styles.left}>
+                    <h1 className={styles.name}>HomeChef</h1>
+                </div>
+                <nav className={styles.middle}>
+                    {drawer ? (
+                        <div>Drawer</div>
+                    ) : (
+                        <>
+                            <Link href="/">Home</Link>
+                            <Link href="/meals">Meals</Link>
+                            <Link href="/about">About</Link>
+                            {user && <Link href="/profile">Profile</Link>}
+                        </>
+                    )}
+                </nav>
+                <div className={styles.right}>
+                    {!user ? (
+                        // Add on click
+                        <>
+                            <button onClick={() => setlShowModal((prev) => !prev)}>
+                                Login
+                            </button>
+                            <button
+                                className={styles.signupButton}
+                                onClick={() => setShowModal((prev) => !prev)}
+                            >
+                                Signup
+                            </button>
+                        </>
+                    ) : (
+                        // Change user to username
+                        <>
+                            <div className={styles.userEmail}>{user.email}</div>
+                            <button onClick={() => signOut()}>Logout</button>
+                        </>
+                    )}
+                </div>
             </div>
 
             <SignUpModal modalIsOpen={showModal} closeModal={closeModal} />

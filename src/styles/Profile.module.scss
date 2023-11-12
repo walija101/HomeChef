@@ -1,7 +1,6 @@
 @import 'main';
 
 .container{
-    height: 120vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,12 +9,10 @@
     padding: 0px 16px;
     gap: 8px;
     font-size: 1.75rem;
-
+    margin-bottom: 50px;
     .stats{
         span{
-            color: $darkGreen;
-            text-decoration: underline;
-            text-decoration-color: $darkBrown;
+            color: $cream;
         }
     }
 
@@ -86,28 +83,15 @@
         width: 40vw;
         display: flex;
         justify-content: center;
-
+        .profileForm {
+            input::placeholder{
+                color: grey;
+            }
+        }
         div{
             display: flex;
             justify-content: center;
             margin-bottom: 12px;
-
-            input{
-                width: 50%;
-                border: 2px solid $darkBrown;
-                border-radius: 5px;
-                text-indent: 10%;
-                padding: 3px;
-            }
-
-            input:focus{
-                outline: none;
-            }
-
-            input[type=text],input[type=text]::placeholder{
-                color: $darkBrown;
-               }
-
 
             button{
                 padding: 10px;
