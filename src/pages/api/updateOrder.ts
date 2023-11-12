@@ -2,8 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import {connectToDB} from '@/lib/db'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { authOptions } from '@/lib/auth';
-import {User} from '@/lib/models/models'
-import { updateUser } from '@/lib/models/user/user.model';
+import { updateOrder } from '@/lib/models/order/order.model';
 
 export default async function handler(
     req: NextApiRequest,
@@ -21,9 +20,9 @@ export default async function handler(
         // if (!session)
         //     return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {userId, data} = req.body
+        const {orderId, data} = req.body
 
-        await updateUser(userId, data)
+        updateOrder(orderId, data)
         res.status(201).json({success: true})
     } catch (error: any) {
         console.log(error)
