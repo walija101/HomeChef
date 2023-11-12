@@ -33,7 +33,7 @@ const ModalContent = () => {
                 <img src={'./images/cass.jpg'} className={styles.food}/>
                 <div className={styles.imgRight}>
                     <div>Price: $29.99</div>
-                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sint harum distinctio. Eos quam maiore.</div>
+                    <div>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sint harum distinctio.</div>
                 </div>
 
            </div>
@@ -48,8 +48,10 @@ const ModalContent = () => {
                 </ul>
             </div>
             <div className={styles.details}>
-                <div> Chef name: John Stewart </div>
-                <div>Rating: 4.5</div>
+                <div className={styles.detailsLeft}>
+                    <div> Chef name: John Stewart </div>
+                    <div>Rating: 4.5</div>
+                </div>
                 <img src={'./images/gordo.jpeg'} className={styles.face}/>
             </div>
             <div className={styles.order}>

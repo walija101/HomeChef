@@ -26,6 +26,8 @@ const ModalContent = () => {
     const [signUpData, setSignUpData] = useState(
         {
             email: "",
+            name: "",
+            phoneNumber: 0,
             password: "",
             type: ""
         }
@@ -46,7 +48,15 @@ const ModalContent = () => {
             <h2 className={styles.header}>Sign up to Home Chef</h2>
 
             <form className={styles.form}>
-                <div className= {styles.typeContainer}>
+                <div className= {styles.inputRow}>
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        onChange={handleChange}
+                        name="name"
+                        value={signUpData.name}
+                    />  
+
                     <input
                         type="text"
                         placeholder="Email"
@@ -54,14 +64,25 @@ const ModalContent = () => {
                         name="email"
                         value={signUpData.email}
                     />
+                    </div>
 
+                <div className= {styles.inputRow}>
                     <input
-                        type="text"
+                        type="text" 
                         placeholder="Password"
                         onChange={handleChange}
                         name="password"
                         value={signUpData.password}
                     />
+
+                    <input
+                        type="number"
+                        placeholder="Number"
+                        onChange={handleChange}
+                        name="phoneNumber"
+                        value={signUpData.phoneNumber}
+                    />
+
                 </div>
   
                 <fieldset>

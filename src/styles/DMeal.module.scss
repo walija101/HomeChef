@@ -25,6 +25,14 @@
 
         .details{
             display: flex;
+            column-gap: 40px;
+
+            .detailsLeft{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
         }
 
         img{

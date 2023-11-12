@@ -45,7 +45,7 @@ const ModalContent = () => {
             <h2 className={styles.header}>Welcome back to Home Chef</h2>
 
             <form className={styles.form}>
-                <div className= {styles.typeContainer}>
+                <div className= {styles.inputRow}>
                     <input
                         type="text"
                         placeholder="Email"
