@@ -1,52 +1,64 @@
-@import "main";
-
 .layoutContainer {
-  border: none !important;
-  outline: none !important;
-  div {
-    border: none !important;
-    outline: none !important;
-  }
+  width: 100%;
+  margin-top: 15vh;
+
   .top {
     background: radial-gradient(circle, #8f9779, #666c59);
     color: white;
     align-items: center;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    width: 100%;
     font-size: 1.5em;
-    align-self: center;
+    padding: 1em;
   }
+
   .middle {
     background: radial-gradient(circle, #a45a52, #63413e);
     color: white;
-    align-items: center;
-    display: flexbox;
-    justify-content: center;
     text-align: center;
     padding: 2em 0;
     font-size: 1.2em;
   }
+
   .cards {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
   .card {
-    align-items: center;
     background-color: #733635;
     padding: 1em;
-    width: 20em;
     height: 8em;
     margin: 1em;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   }
+
   .bottom {
     background: radial-gradient(circle, #8f9779, #666c59);
     color: white;
-    align-items: center;
     text-align: center;
     font-size: 2em;
     padding: 2em 0em;
   }
-  width: 100%;
-  margin-top: 15vh;
+
+  @media (min-width: 768px) {
+    /* Adjust styles for larger screens if needed */
+    .top {
+      font-size: 2em;
+    }
+
+    .middle {
+      font-size: 1.5em;
+    }
+
+    .card {
+      width: calc(33.333% - 2em); /* Adjust as needed */
+      max-width: none; /* Remove maximum width for larger screens */
+    }
+
+    .bottom {
+      font-size: 2.5em;
+    }
+  }
 }
