@@ -68,6 +68,9 @@ export default function Order() {
                         onChange={handleChange}
                     />
                     <label htmlFor="chef">Pickup</label>
+
+                    {mode.type === "pickup" ? (<><div>You must pick your meal up at Pizza Road by next Monday!</div></>) : 
+                     (<><div>Your order should be delivered by next Monday!</div></>) }
                     <br />
           </form>
 
