@@ -53,25 +53,7 @@
         margin-left: 20px;
         margin-right: 20px;
         padding: 10px;
-
-        button {
-            border: none;
-            border-radius: 5px;
-            padding: 8px;
-            display: block;
-            width: 25%;
-            position: absolute;
-            left: 37.5%;
-            size: 100px;
-            background-color: $cream;
-            color: $darkGreen;
-        }
-        button:hover {
-            position: relative;
-            top: -5px;
-            background-color:burlywood;
-        }
-        
+        @include flexDisplaying($justify: center);        
     }
     
 

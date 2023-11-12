@@ -1,5 +1,7 @@
+import DetailedMealModal from '@/components/DetailedMealModal';
 import MealCard from '@/components/MealCard';
 import styles from '@/styles/Meals.module.scss';
+import { useCallback, useState } from 'react';
 
 const meals = [
     {
@@ -95,14 +97,23 @@ const meals = [
 ];
 
 function Meals() {
+    const [meal, setMeal] = useState(null);
+    const setOpenMeal = useCallback((arg: any) => {
+        setMeal(arg)
+    }, [])
+    const closeModal = useCallback(() => {
+        setMeal(null)
+    }, [])
+
     return (
         <center className={styles.mealsContainer}>
             <h1>Explore meals from chefs near you</h1>
             <div className={styles.mealsCards}>
                 {meals.map(meal => (
-                    <MealCard key={meal._id} meal={meal} />
+                    <MealCard key={meal._id} meal={meal} onClick={setOpenMeal} />
                 ))}
             </div>
+            <DetailedMealModal mmodalIsOpen={Boolean(meal)} closeModal={closeModal} />
         </center>
     )
 }
