@@ -34,7 +34,7 @@ const ModalContent = ({ closeModal, meal }: { closeModal: () => void, meal: Meal
     return (
         <div className={styles.container}>
 
-           <h1 className={styles.title}>{`${meal.chef}'s Casserole`}</h1>
+           <h1 className={styles.title}>{`${meal.chef}'s ${meal.name}`}</h1>
 
            <img src={`./images/${meal.image}.jpg`} className={styles.img}/>
 
