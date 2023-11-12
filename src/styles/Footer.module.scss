@@ -1,25 +1,19 @@
 @import "main";
 
-.footer{
-    position: fixed;
-    bottom: 0;
-    background-color: $cream;
-    height: 8vh;
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    
-    h3 {
-        color: $darkBrown;
-    }
+.footer {
+  background: linear-gradient(to right, $cream, #bab8a5);
+  height: 4vh;
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
 
-    div {
-        color: $darkGreen;
-    }
+  h3 {
+    color: $darkBrown;
+  }
 
-    
+  div {
+    color: $darkGreen;
+  }
 }
-
-
