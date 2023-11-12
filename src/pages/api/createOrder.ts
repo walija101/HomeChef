@@ -3,6 +3,7 @@ import {connectToDB} from '@/lib/db'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { authOptions } from '@/lib/auth';
 import {Order} from '@/lib/models/models'
+import { createOrder } from '@/lib/models/order/order.model';
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,19 +16,18 @@ export default async function handler(
     try {
         await connectToDB();
 
-        const serverResponse = await getServerSession(req, res, authOptions)
-        const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
-        if (!session)
-            return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
+        // const serverResponse = await getServerSession(req, res, authOptions)
+        // const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
+        // if (!session)
+        //     return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {meal, user} = req.body
+        const {meal, user, status} = req.body
 
         const order = {
-            meal: meal,
-            user: user
+            meal, user, status
         }
 
-        await (Order as any).createOrder(order)
+        await createOrder(order)
         res.status(201).json({success: true})
 
     } catch (error: any) {

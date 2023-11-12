@@ -13,7 +13,6 @@ export default async function handler(
         try {
             await connectToDB();
 
-            
             const { userId } = req.query;
             const user = await User.findById(userId);
 

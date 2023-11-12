@@ -33,7 +33,18 @@ const UserSchema = new Schema({
 
 const User = models.User || model('User', UserSchema);
 
-UserSchema.statics.createUser = async function(data) {
+type createUserData = {
+    name: string,
+    description: string,
+    picture: string,
+    isChef: boolean,
+    rating: number,
+    email: string,
+    phone: string,
+    [key: string]: any
+}
+
+export async function createUser(data : createUserData) {
     const {name, description, picture, isChef, rating, email, phone} = data
     const user: {
         name: string, description?: string, picture?: string, isChef: boolean, rating?: number, email: string, phone: string
@@ -51,11 +62,11 @@ UserSchema.statics.createUser = async function(data) {
     if (picture)
         user.picture = picture
 
-    return (await this.create(user));
+    return (await User.create(user));
 }
 
-UserSchema.statics.updateUser = async function (userId, data) {
-    const theUser = await this.findById(userId);
+export async function updateUser(userId : string, data : createUserData) {
+    const theUser = await User.findById(userId);
     if(!theUser)
         throw Error("Could not find user");
 
@@ -86,7 +97,7 @@ UserSchema.statics.updateUser = async function (userId, data) {
 
     if(Object.keys(updateObject).length > 0) {
         updateObject.updatedAt = new Date().toISOString().slice(0, 23)+"+00:00";
-        await this.findOneAndUpdate({ _id: userId }, updateObject);
+        await User.findOneAndUpdate({ _id: userId }, updateObject);
     }
 }
 

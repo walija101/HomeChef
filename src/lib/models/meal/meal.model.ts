@@ -13,7 +13,7 @@ const MealSchema = new Schema({
         type: Number,
         required: true
     },
-    ingrediants: [{
+    ingredients: [{
         type: String,
         required: true
     }],
@@ -23,11 +23,11 @@ const MealSchema = new Schema({
         required: true
     },
     cookTime: { // Time which the meal will be made at.
-        type: Date,
+        type: String,
         required: true
     },
     pickupTime: { // Time which the meal can be picked up.
-        type: Date,
+        type: String,
         required: true
     },
     image: {
@@ -38,21 +38,22 @@ const MealSchema = new Schema({
 
 const Meal = models.Meal || model('Meal', MealSchema);
 
-MealSchema.statics.createMeal = async function(data) {
-    const {name, description, price, ingrediants, chef, cookTime, pickupTime, image} = data
+type createMealData = {
+    name: string,
+    description: string,
+    price: number,
+    ingredients: string[], 
+    chef: string, 
+    cookTime: string, 
+    pickupTime: string,
+    image: string
+}
+export async function createMeal(data: createMealData) {
+    const {name, description, price, ingredients, chef, cookTime, pickupTime, image} = data
     const meal: {
-        name: string, description: string, price: number, ingrediants: string[], chef: string, cookTime: Date, pickupTime: Date,  image: string
-    } = {
-        name: name,
-        description: description,
-        price: price,
-        ingrediants: ingrediants, 
-        chef: chef,
-        cookTime: cookTime, 
-        pickupTime: pickupTime,
-        image: image
-    }
-    await this.create(meal)
+        name: string, description: string, price: number, ingredients: string[], chef: string, cookTime: string, pickupTime: string,  image: string
+    } = {name, description, price, ingredients, chef, cookTime, pickupTime, image}
+    await Meal.create(meal)
 }
 
 export default Meal;

@@ -3,6 +3,7 @@ import {connectToDB} from '@/lib/db'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { authOptions } from '@/lib/auth';
 import {User} from '@/lib/models/models'
+import { updateUser } from '@/lib/models/user/user.model';
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,23 +16,14 @@ export default async function handler(
     try {
         await connectToDB();
 
-        const serverResponse = await getServerSession(req, res, authOptions)
-        const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
-        if (!session)
-            return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
+        // const serverResponse = await getServerSession(req, res, authOptions)
+        // const session = serverResponse ? JSON.parse(JSON.stringify(serverResponse)) : null;
+        // if (!session)
+        //     return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {name, description, picture, isChef, rating, phone} = req.body
+        const {userId, data} = req.body
 
-        const user = {
-            name: name,
-            description: description,
-            picture: picture,
-            isChef: isChef,
-            rating: rating,
-            phone: phone
-        }
-
-        await (User as any).updateUser(user)
+        await updateUser(userId, data)
         res.status(201).json({success: true})
     } catch (error: any) {
         console.log(error)

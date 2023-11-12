@@ -19,7 +19,14 @@ const OrderSchema = new Schema({
 
 const Order = models.Order || model('Order', OrderSchema);
 
-OrderSchema.statics.createOrder = async function(data) {
+type createOrderData = {
+    meal: string,
+    user: string,
+    status: string,
+    [key: string]: any
+}
+
+export async function createOrder(data : createOrderData) {
     const {meal, user, status} = data
     const order: { 
         meal: string, user: string, status: string 
@@ -28,11 +35,11 @@ OrderSchema.statics.createOrder = async function(data) {
         user: user,
         status: status
     }
-    return (await this.create(order));
+    return (await Order.create(order));
 }
 
-OrderSchema.statics.updateOrder = async function (orderId, data) {
-    const theOrder = await this.findById(orderId);
+export async function updateOrder(orderId : string, data : createOrderData) {
+    const theOrder = await Order.findById(orderId);
     if(!theOrder)
         throw Error("Could not find order");
 
@@ -56,7 +63,7 @@ OrderSchema.statics.updateOrder = async function (orderId, data) {
 
     if(Object.keys(updateOrder).length > 0) {
         updateOrder.updatedAt = new Date().toISOString().slice(0, 23)+"+00:00";
-        await this.findOneAndUpdate({ _id: orderId }, updateOrder);
+        await Order.findOneAndUpdate({ _id: orderId }, updateOrder);
     }
 }
 
