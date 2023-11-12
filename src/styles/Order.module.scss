@@ -1,0 +1,50 @@
+@import "main";
+
+.container{
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $darkBrown;
+    padding: 0px 16px;
+    gap: 8px;
+
+    span{
+        color: $darkGreen;
+        text-decoration: underline;
+        text-decoration-color: $darkBrown;
+    }
+
+    button{
+        padding: 16px;
+        background-color: $green;
+        border: none;
+        min-width: 12vw;
+        height: 8vh;
+        border: 3px solid $darkBrown;
+        border-radius: 5px;
+        color: $darkBrown;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    button:hover{
+        cursor: pointer;
+        opacity: 0.8;
+    }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+
+    .orderOptions{
+        display: flex;
+        flex-direction: column;
+        form{
+            input[type=radio]{ 
+                accent-color: $darkBrown; 
+            } 
+        }
+    }
+}
