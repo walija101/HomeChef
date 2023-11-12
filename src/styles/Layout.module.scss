@@ -1,0 +1,50 @@
+@import "main";
+
+.layoutContainer {
+  border: none !important;
+  outline: none !important;
+  div {
+    border: none !important;
+    outline: none !important;
+  }
+  .top {
+    background-color: #8f9779;
+    color: white;
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.5em;
+  }
+  .middle {
+    background-color: #a45a52;
+    color: white;
+    align-items: center;
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    padding: 2em 0;
+    font-size: 1.2em;
+  }
+  .cards {
+    display: inline-flex;
+  }
+  .card {
+    align-items: center;
+    background-color: #733635;
+    padding: 1em;
+    width: 20em;
+    height: 8em;
+    margin: 1em;
+  }
+  .bottom {
+    background-color: #8f9779;
+    color: white;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    padding: 2em 0em;
+  }
+  width: 100%;
+  margin-top: 15vh;
+}

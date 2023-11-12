@@ -1,0 +1,19 @@
+@import "main";
+
+.footer {
+  background-color: $cream;
+  height: 4vh;
+  padding: 20px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+  h3 {
+    color: $darkBrown;
+  }
+
+  div {
+    color: $darkGreen;
+  }
+}
