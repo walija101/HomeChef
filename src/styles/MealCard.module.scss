@@ -33,4 +33,28 @@
         text-align: left;
         color: black;
     }
+    .chefSection {
+        margin-top: 15px;
+        @include flexDisplaying();
+        width: 95%;
+        .chefIcon {
+            overflow: hidden;
+            margin-right: 5px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .chefName {
+
+        }
+        .chefInfoSection {
+            width: 80%;
+            @include flexDisplaying($direction: column, $align: flex-start);
+        }
+    }
 }
