@@ -2,13 +2,19 @@ import styles from '@/styles/Header.module.scss'
 import Link from 'next/link'
 import {useSession} from 'next-auth/react'
 import { useEffect, useState } from 'react';
+import AuthModal from './AuthModal'
 
 function Header() {
-    const {data: session} = useSession();
-    const user = session && session.user;
+  const {data: session} = useSession();
+  const user = session && session.user;
 
-    const [drawer, setDrawer] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  function closeModal(){
+    setShowModal(false)
+  }
 
+
+  const [drawer, setDrawer] = useState(false);
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth < 500){
@@ -19,6 +25,7 @@ function Header() {
     if (window) window.addEventListener('resize', handleSize);
     return () => {window.removeEventListener('resize', handleSize)}
   }, [])
+
   return (
     <div className= {styles.header}>
 
@@ -31,7 +38,7 @@ function Header() {
                   // Add on click
                   <>
                     <button>Login</button>
-                    <button>Signup</button>
+                    <button onClick={() => setShowModal(true)}>Signup</button>
                   </>
               ):
               // Change user to username
@@ -51,7 +58,7 @@ function Header() {
           }
         </nav>
 
-
+       <AuthModal modalIsOpen={showModal} closeModal={closeModal}/>
     </div>
   )
 }

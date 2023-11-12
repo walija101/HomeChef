@@ -1,0 +1,13 @@
+@import "main";
+
+.modal{
+    height: 100%;
+    width: 100%;
+    min-width: 40vw;
+    min-height: 80vh;;
+    color: black;
+
+    fieldset{
+        width: 20vw;
+    }
+}
