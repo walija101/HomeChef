@@ -1,7 +1,8 @@
-@import 'main';
+@import "main";
 
-.loginForm {
-    color: $darkBrown;
+
+.signUpForm {
+    color: $darkGreen;
     @include flexDisplaying($direction: column, $align: center);
     h2 {
         margin-bottom: 20px;

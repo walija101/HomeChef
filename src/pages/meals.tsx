@@ -88,7 +88,7 @@ function Meals() {
             <h1>Explore meals from chefs near you</h1>
             <div className={styles.mealsCards}>
                 {meals.map(meal => (
-                    <MealCard meal={meal} />
+                    <MealCard key={meal._id} meal={meal} />
                 ))}
             </div>
         </center>

@@ -1,7 +1,7 @@
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import styles from '@/styles/LoginModal.module.scss'
+import styles from '@/styles/SignUpModal.module.scss'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
@@ -28,11 +28,11 @@ const modalBoxStyles = {
     p: 3
 };
 
-type userLoginInfo = {
+type userSignUpInfo = {
     email: string,
     password: string
 }
-const ModalContent = () => {
+const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const schema = yup.object({
@@ -40,7 +40,7 @@ const ModalContent = () => {
         password: yup.string().required('Password is required')
     });
 
-    const formContents = useForm<userLoginInfo>({
+    const formContents = useForm<userSignUpInfo>({
         defaultValues: {
             email: '',
             password: ''
@@ -50,17 +50,25 @@ const ModalContent = () => {
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = formContents
 
-    const onSubmit = (data: userLoginInfo) => {
-        const { email, password } = data;
-        signIn('credentials', {
-            email, password
-        })
+    const onSubmit = async (data: userSignUpInfo) => {
+        const { email, password } = data
+        try {
+            await signIn('credentials', {
+                email,
+                password,
+                ourMode: 'signingUp',
+                redirect: false
+            });
+            closeModal()
+        } catch(error: any) {
+            console.log(error)
+        }
     }
 
     return (
         <FormProvider {...formContents}>
-            <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-                <h2>Welcome back to HomeChef</h2>
+            <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
+                <h2>Sign Up to HomeChef</h2>
                 <TextField required label="Email" placeholder="Enter your email"
                     {...register('email')}
                     sx={{
@@ -95,31 +103,31 @@ const ModalContent = () => {
                 <LoadingButton 
                     type='submit' 
                     sx={{ 
-                        marginTop: '25px', width: '345px', bgcolor: '#733635',
-                        '&:hover': { bgcolor: '#4b6f40'} 
+                        marginTop: '25px', width: '345px', bgcolor: '#4b6f40',
+                        '&:hover': { bgcolor: '#733635'} 
                     }} 
                     loading={isSubmitting} variant="contained"
                 >
-                    Login
+                    Sign Up
                 </LoadingButton>
             </form>
         </FormProvider>
     )
 };
 
-type AuthModalProps = {
-    lmodalIsOpen: boolean,
-    lcloseModal: ()=>void
+type SignUpModalProps = {
+    modalIsOpen: boolean,
+    closeModal: ()=>void
 }
 
-export default function LoginModal({ lmodalIsOpen, lcloseModal } : AuthModalProps) {
+export default function SignUpModal({ modalIsOpen, closeModal } : SignUpModalProps) {
     return (
         <div>
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
-                open={lmodalIsOpen}
-                onClose={lcloseModal}
+                open={modalIsOpen}
+                onClose={closeModal}
                 closeAfterTransition
                 components={{
                     Backdrop
@@ -130,9 +138,9 @@ export default function LoginModal({ lmodalIsOpen, lcloseModal } : AuthModalProp
                     }
                 }}
             >
-                <Fade in={lmodalIsOpen}>
+                <Fade in={modalIsOpen}>
                     <Box component='div' sx={modalBoxStyles}>
-                        <ModalContent />
+                        <ModalContent closeModal={closeModal} />
                     </Box>
                 </Fade>
             </Modal>
