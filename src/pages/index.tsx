@@ -21,7 +21,7 @@ export default function Home() {
         />
       </div>
       <div className={LOstyles.middle}>
-        <h2>How it works</h2>
+        <h2>How It Works</h2>
         <div className={LOstyles.cards}>
           <div className={LOstyles.card}>
             <h1>1</h1>
