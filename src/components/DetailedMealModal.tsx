@@ -31,7 +31,7 @@ const ModalContent = () => {
     return (
         <div className={styles.container}>
 
-           <h1 className={styles.title}>Joe's Casserole</h1>
+           <h1 className={styles.title}>{`Joe's Casserole`}</h1>
 
            <img src={'./images/cass.jpg'} className={styles.img}/>
 
