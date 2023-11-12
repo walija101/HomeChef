@@ -7,8 +7,10 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react';
 
 const modalBoxStyles = {
+
     '& .MuiTextField-root': { m: 1, width: '95%'},
-    maxWidth: '450px',
+    maxWidth: '600px',
+    maxHeight: '500px',
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -19,45 +21,48 @@ const modalBoxStyles = {
     border: '1px solid lightgrey',
     outline: 'none',
     boxShadow: 24,
-    p: 3
+    p: 3,
+    borderRadius: "10px",
+    overflowY: "auto"
+    
 };
 
 const ModalContent = () => {
     return (
         <div className={styles.container}>
 
-           <h1 className={styles.first}>Joe's Casserole</h1>
+           <h1 className={styles.title}>Joe's Casserole</h1>
 
-           <div className={styles.second}>
+           <img src={'./images/cass.jpg'} className={styles.img}/>
 
-                <img src={'./images/cass.jpg'} className={styles.food}/>
-                <div className={styles.imgRight}>
-                    <div>Price: $29.99</div>
-                    <div>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sint harum distinctio.</div>
-                </div>
-
+           <div className={styles.second}> 
+                <hr/>               
+                <div>Price: $29.99</div>
+                <hr/> 
+                <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione sint harum distinctio. Eos quam maiore.</div>
+                <hr/> 
            </div>
 
            <div className={styles.third}>
-            <div className={styles.ingredients}>
                 <div>Ingredients:</div>
-                <ul>
+                <ul className={styles.ingrediants}>
                     <li>corn</li>
                     <li>chicken</li>
                     <li>peas</li>
                 </ul>
-            </div>
-            <div className={styles.details}>
-                <div className={styles.detailsLeft}>
+                <hr/> 
+           </div>
+           <div className={styles.fourth}>
+                <div>
                     <div> Chef name: John Stewart </div>
                     <div>Rating: 4.5</div>
                 </div>
-                <img src={'./images/gordo.jpeg'} className={styles.face}/>
+                <img src={'./images/gordo.jpeg'} className={styles.pfp}/>
             </div>
+            
             <div className={styles.order}>
-                <button>Order</button>
+                <button className={styles.button}>Order</button>
             </div>
-           </div>
 
         </div>
     )

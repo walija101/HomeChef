@@ -1,66 +1,78 @@
 @import "main";
 
+
 .container{
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
-    color: $darkGreen;
-    padding: 10px;
+    
+    color: $darkBrown;
 
     img{
-        width: 80%;
-        height: 100px;
+        width: 350px;
+        height: 210px;
         display: block;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
     }
-
+    .title{
+        color: $darkGreen;
+        text-align: center;
+    }
     .second{
-        display: flex;
-        column-gap: 40px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
     }
 
     .third{
-        display: flex;
-        flex-direction: column;
-        row-gap: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 10px;
 
-        .details{
-            display: flex;
-            column-gap: 40px;
-
-            .detailsLeft{
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
+        .ingrediants{
+            margin-left: 60px;
         }
+    }
+    .fourth{
+        display: flex;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 20px;
 
         img{
             width: 100px;
             height: 100px;
         }
-
-        button{
-            padding: 5px;
-            border: none;
-            color: $darkGreen;
-            width: 25px;
+        .pfp{
+            left: auto;
         }
 
-        .order{
-            display: flex;
-            justify-content: center;
-
-            button{
-                width: 20%;
-                border-radius: 5px;
-                border: 1px solid $darkBrown;
-            }
-
-            button:hover{
-                color: $darkBrown;
-                background-color: $green;
-            }
-        }
     }
+
+    .order{
+        margin-left: 20px;
+        margin-right: 20px;
+        padding: 10px;
+
+        button {
+            border: none;
+            border-radius: 5px;
+            padding: 8px;
+            display: block;
+            width: 25%;
+            position: absolute;
+            left: 37.5%;
+            size: 100px;
+            background-color: $cream;
+            color: $darkGreen;
+        }
+        button:hover {
+            position: relative;
+            top: -5px;
+            background-color:burlywood;
+        }
+        
+    }
+    
+
 }
