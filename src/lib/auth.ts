@@ -3,7 +3,9 @@ import GoogleProvider from 'next-auth/providers/google'
 import CredentialProvider from 'next-auth/providers/credentials'
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter'
 import clientPromise from './mongodb'
-import * as Realm from 'realm-web'
+import { createUser } from "./models/user/user.model";
+import { connectToDB } from "./db";
+import {User} from '@/lib/models/models'
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -18,16 +20,24 @@ export const authOptions: NextAuthOptions = {
                     if(!credentials || !credentials.email || !credentials.password)
                         return null;
 
-                    let realmApp  = new Realm.App({ id: process.env.REALM_APP_ID ?? "" });
-                    if(credentials.ourMode && (credentials.ourMode === 'signingUp'))
-                        await realmApp.emailPasswordAuth.registerUser({
+                    await connectToDB();
+                    let user = null
+                    if(credentials.ourMode === 'signingUp') {
+                        user = await createUser({ 
+                            name: "Some name",
+                            description: "Some really nice description",
+                            picture: "chef.jpg",
+                            isChef: false,
+                            rating: 4,
                             email: credentials.email,
+                            phone: '4034449999',
                             password: credentials.password
                         })
-                    let creds = Realm.Credentials.emailPassword(credentials.email, credentials.password)
-                    let user = await realmApp.logIn(creds) as any;
+                    }
+                    else 
+                        user = await User.findOne({ email: credentials.email })
 
-                    return user.customData
+                    return ({ id: user._id, email: user.email })
                 } catch(err: any) {
                     console.error(err)
                     return null
