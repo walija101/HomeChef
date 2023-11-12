@@ -12,7 +12,8 @@ const ReviewSchema = new Schema({
         required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     stars: {
         type: Number,
@@ -21,5 +22,26 @@ const ReviewSchema = new Schema({
 }, { collection: 'Reviews', timestamps: true });
 
 const Review = models.Review || model('Review', ReviewSchema);
+
+type createReviewData = {
+    order: string,
+    chef: string,
+    description: string,
+    stars: number
+}
+
+export async function createReview(data : createReviewData) {
+    const {order, chef, description, stars} = data
+    const review: {
+        order: string, chef: string, description?:string, stars: number
+    } = {
+        order: order,
+        chef: chef,
+        description: description,
+        stars: stars
+    }
+
+    return (await Review.create(review));
+}
 
 export default Review;
