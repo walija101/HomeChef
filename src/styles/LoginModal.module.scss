@@ -26,19 +26,12 @@
         button:hover{
             cursor: pointer;
         }
-    }
 
-    fieldset{
-        margin-top: 20px;
-        width: 20vw;
-        min-width: 200px;
+        .typeContainer{
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+        }
     }
-
-    .typeContainer{
-        margin-top: 20px;
-        display: flex;
-        gap: 20px;
-    }
-
 }
 

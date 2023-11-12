@@ -16,27 +16,10 @@
     margin-bottom: 20px;
     align-content: center;
 
-        }
-     
-        .right{
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            button{
-                padding: 15px;
-                border: none;
-                background-color: $green;
-                border-radius: 5px;
-            }
-
-            button:hover {
-                position: relative;
-                top: 1px;
-                cursor: pointer;
-                color: $darkGreen;
-            }
-        }
+    .left {
+      margin-right: auto;
+      font-size: 700;
+      color: $darkGreen;
     }
 
     .right {
