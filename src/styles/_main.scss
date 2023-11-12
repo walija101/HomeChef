@@ -32,6 +32,16 @@ $dotColour: rgb(229, 231, 235);
 
 $niceGrey: #e8e8e8;
 
+$darkBrown: #733635;
+
+$brown: #a45a52;
+
+$cream: #edead3;
+
+$green: #8f9779;
+
+$darkGreen: #4b6f40;
+
 @mixin wrappedFlexDisplaying($direction: row, $justify: flex-start, $align: stretch)
 {
     display: flex !important;
