@@ -20,7 +20,7 @@ export default async function handler(
         if (!session)
             return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
 
-        const {name, email, phone, isChef} = req.body
+        const {name, isChef, email, phone} = req.body
 
         const user = {
             name: name,
