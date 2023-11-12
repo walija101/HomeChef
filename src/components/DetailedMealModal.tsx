@@ -61,7 +61,6 @@ const ModalContent = () => {
             </div>
             
             <div className={styles.order}>
-                <hr/>
                 <button className={styles.button}>Order</button>
             </div>
 
