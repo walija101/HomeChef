@@ -4,13 +4,12 @@
   display: flex;
   flex-direction: column;
   background-image: url(../../public/images/food.jpeg);
-  background-size: cover; /* Adjust as needed */
-  margin-top: 15vh;
+  background-size: cover;
+  margin-top: 8vh;
   padding: 2em;
-  //   background: radial-gradient(circle, #a45a52, #63413e);
   color: white;
   text-align: center;
-  height: 50em;
+  height: 100vh;
   padding: 0;
   align-items: center;
   justify-content: center;
@@ -24,5 +23,23 @@
     background-color: rgba(0, 0, 0, 0.5);
     font-size: 1.5em;
     width: 55%;
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 3.5em;
+    }
+    p {
+      width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 2.5em;
+    }
+    p {
+      width: 90%;
+    }
   }
 }
