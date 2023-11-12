@@ -7,10 +7,11 @@ import { useState } from 'react';
 import { useForm, FormProvider, useFormContext } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { IconButton, InputAdornment, TextField, Fade } from '@mui/material';
+import { IconButton, InputAdornment, TextField, Fade, RadioGroup, Button } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { model } from 'mongoose';
 
 const modalBoxStyles = {
     '& .MuiTextField-root': { m: 1, width: '95%'},
@@ -34,6 +35,10 @@ type userSignUpInfo = {
 }
 const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
     const [showPassword, setShowPassword] = useState(false);
+
+    const [type, setType] = useState(
+        "Customer"
+    )
 
     const schema = yup.object({
         email: yup.string().required('Email is required'),
@@ -100,6 +105,19 @@ const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
                     helperText={errors.email?.message}
                     error={!!errors.email}
                 />
+                <div className = {styles.buttonStyle}>
+                    <div>
+                        <input type="radio" value="Customer" name = "type" checked = {type === "Customer"} onChange = {() => setType("Customer")}/> 
+                        <label> Customer</label>
+                    </div>
+                    <div> 
+                        <input type="radio" value="Chef" name = "type" checked = {type === "Customer"} onChange = {() => setType("Customer")}/> 
+                        <label> Chef</label>
+                    </div>
+                    
+    
+
+                </div>
                 <LoadingButton 
                     type='submit' 
                     sx={{ 
