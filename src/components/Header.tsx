@@ -1,8 +1,8 @@
 import styles from "@/styles/Header.module.scss";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
-import AuthModal from "./AuthModal";
+import SignUpModal from "./SignUpModal";
 import LoginModal from "./LoginModal";
 import DetailedMealModal from "./DetailedMealModal";
 
@@ -80,12 +80,12 @@ function Header() {
           // Change user to username
           <>
             <div>Hello, user!</div>
-            <button>Logout</button>
+            <button onClick={() => signOut()}>Logout</button>
           </>
         )}
       </div>
 
-      <AuthModal modalIsOpen={showModal} closeModal={closeModal} />
+      <SignUpModal modalIsOpen={showModal} closeModal={closeModal} />
       <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal} />
 
       <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal} />
