@@ -2,14 +2,14 @@
 
 .footer {
   background: linear-gradient(to right, $cream, #bab8a5);
-  height: 4vh;
+  height: 10%;
   padding: 20px 0px;
   width: 100%;
   display: flex;
   justify-content: center;
   gap: 50px;
 
-    div {
-        color: $darkGreen;
-    }
+  div {
+    color: $darkGreen;
+  }
 }

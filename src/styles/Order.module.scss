@@ -1,50 +1,69 @@
 @import "main";
 
-.container{
-    height: 95vh;
+.container {
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  padding: 0px 16px;
+  gap: 8px;
+  margin-left: 2em;
+
+  span {
+    color: white;
+  }
+
+  button {
+    padding: 0em 1em;
+    background: radial-gradient(circle, #944941, #944941);
+    border-radius: 20px;
+    font-size: 2em;
+    border: none;
+    color: white;
+    height: 2em;
+    align-self: center;
+    &:hover {
+      position: relative;
+      top: 1px;
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+
+  button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    padding: 5px 0; /* Adjust padding for spacing */
+    font-size: 16px; /* Adjust font size for readability */
+    border: none; /* Remove the border */
+    border-bottom: 2px solid #ccc; /* Add a bottom border */
+    outline: none; /* Remove the default focus outline */
+    background-color: transparent;
+    color: white;
+  }
+  input:focus {
+    border-bottom-color: #ffffff; /* Change the bottom border color on focus */
+    box-shadow: 0 2px 0 #ffffff; /* Add a slight shadow on focus */
+    background-color: transparent;
+    color: white;
+  }
+
+  .orderOptions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    color: $darkBrown;
-    padding: 0px 16px;
-    gap: 8px;
-
-    span{
-        color: $darkGreen;
-        text-decoration: underline;
-        text-decoration-color: $darkBrown;
+    form {
+      input[type="radio"] {
+        accent-color: $darkBrown;
+      }
     }
-
-    button{
-        padding: 16px;
-        background-color: $green;
-        border: none;
-        min-width: 12vw;
-        height: 8vh;
-        border: 3px solid $darkBrown;
-        border-radius: 5px;
-        color: $darkBrown;
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
-
-    button:hover{
-        cursor: pointer;
-        opacity: 0.8;
-    }
-
-    .button{
-        display: flex;
-        justify-content: center;
-    }
-
-    .orderOptions{
-        display: flex;
-        flex-direction: column;
-        form{
-            input[type=radio]{ 
-                accent-color: $darkBrown; 
-            } 
-        }
-    }
+  }
 }
