@@ -22,4 +22,19 @@ const ReviewSchema = new Schema({
 
 const Review = models.Review || model('Review', ReviewSchema);
 
+ReviewSchema.statics.createReview = async function(data) {
+    const {order, chef, description, stars} = data
+    const review: {
+        order: string, chef: string, description?:string, stars: number
+    } = {
+        order: order,
+        chef: chef,
+        stars: stars
+    }
+    if (description) 
+        review.description = description
+
+    return (await this.create(review));
+}
+
 export default Review;
