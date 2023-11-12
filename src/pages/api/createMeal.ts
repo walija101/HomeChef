@@ -20,7 +20,7 @@ export default async function handler(
         if (!session)
             return res.status(401).json({error: 'You are not logged in, please sign in and try again'})
  */
-        const {name, description, price, ingredients, chef, cookTime, pickupTime, image} = req.body
+        const {name, description, price, ingredients, chef, cookTime, pickupTime, image, maxOrders} = req.body
 
         const meal = {
             name,
@@ -30,7 +30,8 @@ export default async function handler(
             chef,
             cookTime, 
             pickupTime,
-            image
+            image,
+            maxOrders
         }
 
         await createMeal(meal)

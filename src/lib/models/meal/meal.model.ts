@@ -33,6 +33,10 @@ const MealSchema = new Schema({
     image: {
         type: String,
         required: true
+    },
+    maxOrders: {
+        type: Number,
+        required: true
     }
 }, { collection: 'Meals', timestamps: true });
 
@@ -46,13 +50,14 @@ type createMealData = {
     chef: string, 
     cookTime: string, 
     pickupTime: string,
-    image: string
+    image: string,
+    maxOrders: number
 }
 export async function createMeal(data: createMealData) {
-    const {name, description, price, ingredients, chef, cookTime, pickupTime, image} = data
+    const {name, description, price, ingredients, chef, cookTime, pickupTime, image, maxOrders} = data
     const meal: {
-        name: string, description: string, price: number, ingredients: string[], chef: string, cookTime: string, pickupTime: string,  image: string
-    } = {name, description, price, ingredients, chef, cookTime, pickupTime, image}
+        name: string, description: string, price: number, ingredients: string[], chef: string, cookTime: string, pickupTime: string,  image: string, maxOrders: number
+    } = {name, description, price, ingredients, chef, cookTime, pickupTime, image, maxOrders}
     await Meal.create(meal)
 }
 
