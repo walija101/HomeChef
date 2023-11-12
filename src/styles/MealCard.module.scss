@@ -1,0 +1,36 @@
+@import 'main';
+
+.card {
+    border-radius: 10px;
+    background-color: #f4f3f1;
+    width: 360px;
+    height: 375px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    margin: 30px 10px;
+    padding: 15px;
+    @include flexDisplaying($direction: column, $align: center);
+    .pictureContainer {
+        overflow: hidden;
+        border-radius: 12px;
+        width: 95%;
+        height: 45%;
+        background-color: red;
+    }
+    .nameSection {
+        width: 95%;
+        @include flexDisplaying($justify: space-between, $align: center);
+        .foodName {
+            color: #4b6f40;
+            text-align: left;
+        }
+        .price {
+            color: black;
+        }
+    }
+    p {
+        width: 95%; 
+        color: #4b6f40;
+        text-align: left;
+        color: black;
+    }
+}
