@@ -1,4 +1,5 @@
 import { Schema, model, models } from 'mongoose';
+import { UserType } from './user.types';
 
 const UserSchema = new Schema({
     name: {
@@ -44,7 +45,7 @@ type createUserData = {
     [key: string]: any
 }
 
-export async function createUser(data : createUserData) {
+export async function createUser(data : createUserData): Promise<UserType> {
     const {name, description, picture, isChef, rating, email, phone} = data
     const user: {
         name: string, description?: string, picture?: string, isChef: boolean, rating?: number, email: string, phone: string
