@@ -1,0 +1,58 @@
+@import "main";
+
+.container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    color: $darkGreen;
+    padding: 10px;
+
+    img{
+        width: 80%;
+        height: 100px;
+        display: block;
+    }
+
+    .second{
+        display: flex;
+        column-gap: 40px;
+    }
+
+    .third{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .details{
+            display: flex;
+        }
+
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        button{
+            padding: 5px;
+            border: none;
+            color: $darkGreen;
+            width: 25px;
+        }
+
+        .order{
+            display: flex;
+            justify-content: center;
+
+            button{
+                width: 20%;
+                border-radius: 5px;
+                border: 1px solid $darkBrown;
+            }
+
+            button:hover{
+                color: $darkBrown;
+                background-color: $green;
+            }
+        }
+    }
+}

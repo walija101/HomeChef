@@ -2,13 +2,34 @@ import styles from "@/styles/Header.module.scss";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import AuthModal from "./AuthModal";
+import LoginModal from "./LoginModal";
+import DetailedMealModal from "./DetailedMealModal";
 
 function Header() {
   const { data: session } = useSession();
   const user = session && session.user;
 
-  const [drawer, setDrawer] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [lshowModal, setlShowModal] = useState(false);
 
+
+  const [meal, setMeal] = useState(false)
+//-----------
+  function closeMeal(){
+    setMeal(false)
+  }
+  //-----------
+
+  function closeModal(){
+    setShowModal(false);
+  }
+
+  function lcloseModal(){
+    setlShowModal(false);
+  }
+
+  const [drawer, setDrawer] = useState(false);
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth < 500) {
@@ -31,12 +52,15 @@ function Header() {
           {!user ? (
             // Add on click
             <>
-              <button>Login</button>
-              <button className={styles.signupButton}>Signup</button>
+              <button onClick={() => setlShowModal(prev => !prev)}>Login</button>
+              <button className={styles.signupButton} onClick={() => setShowModal(prev => !prev)}>Signup</button>
             </>
           ) : (
             // Change user to username
-            <div>Hello, user!</div>
+            <>
+               <div>Hello, user!</div>
+               <button>Logout</button>
+            </>
           )}
         </div>
       </nav>
@@ -49,10 +73,16 @@ function Header() {
             <Link href="/">Home</Link>
             <Link href="/meals">Meals</Link>
             <Link href="/about">About</Link>
-            <Link href="/profile">Profile</Link>
+            {user ? <> </> :<Link href="/profile">Profile</Link>}
+            <button onClick={() => setMeal(prev => !prev)} className={styles.test}></button>
           </>
         )}
       </nav>
+      <AuthModal modalIsOpen={showModal} closeModal={closeModal}/>
+      <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal}/>
+
+      <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal}/>
+
     </div>
   );
 }
