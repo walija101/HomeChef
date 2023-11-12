@@ -51,7 +51,10 @@ const ModalContent = () => {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = formContents
 
     const onSubmit = (data: userLoginInfo) => {
-        console.log("data submitted", data)
+        const { email, password } = data;
+        signIn('credentials', {
+            email, password
+        })
     }
 
     return (

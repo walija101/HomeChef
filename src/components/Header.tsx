@@ -1,6 +1,6 @@
 import styles from "@/styles/Header.module.scss";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useEffect, useState } from "react";
 import SignUpModal from "./SignUpModal";
 import LoginModal from "./LoginModal";
@@ -62,8 +62,31 @@ function Header() {
           </>
         )}
       </nav>
-      <SignUpModal modalIsOpen={showModal} closeModal={closeModal}/>
-      <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal}/>
+      <div className={styles.right}>
+        {!user ? (
+          // Add on click
+          <>
+            <button onClick={() => setlShowModal((prev) => !prev)}>
+              Login
+            </button>
+            <button
+              className={styles.signupButton}
+              onClick={() => setShowModal((prev) => !prev)}
+            >
+              Signup
+            </button>
+          </>
+        ) : (
+          // Change user to username
+          <>
+            <div>Hello, user!</div>
+            <button onClick={() => signOut()}>Logout</button>
+          </>
+        )}
+      </div>
+
+      <SignUpModal modalIsOpen={showModal} closeModal={closeModal} />
+      <LoginModal lmodalIsOpen={lshowModal} lcloseModal={lcloseModal} />
 
       <DetailedMealModal mmodalIsOpen={meal} mcloseModal={closeMeal} />
     </div>

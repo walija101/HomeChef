@@ -32,7 +32,7 @@ type userSignUpInfo = {
     email: string,
     password: string
 }
-const ModalContent = () => {
+const ModalContent = ({ closeModal }: { closeModal: () => void }) => {
     const [showPassword, setShowPassword] = useState(false);
 
     const schema = yup.object({
@@ -59,6 +59,7 @@ const ModalContent = () => {
                 ourMode: 'signingUp',
                 redirect: false
             });
+            closeModal()
         } catch(error: any) {
             console.log(error)
         }
@@ -139,7 +140,7 @@ export default function SignUpModal({ modalIsOpen, closeModal } : SignUpModalPro
             >
                 <Fade in={modalIsOpen}>
                     <Box component='div' sx={modalBoxStyles}>
-                        <ModalContent />
+                        <ModalContent closeModal={closeModal} />
                     </Box>
                 </Fade>
             </Modal>
