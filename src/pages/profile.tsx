@@ -33,9 +33,12 @@ function Profile() {
         <div>Your phone number is: <span>40912910129</span></div>
       </div>
 
-      <h3>Your orders are: </h3>
       <div className={styles.orders}>
-
+        <h3>Your orders are: </h3>
+        <ul>
+          <li>Order for Bob!</li>
+          <li>Order for Shay!</li>
+        </ul>
       </div>
 
       {type==="chef" ? (<>
